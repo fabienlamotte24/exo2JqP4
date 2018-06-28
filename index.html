@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/jq/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Exercice 2</title>
+  </head>
+  <body>
+    <form class="releveNote" id="releveNote"  action="traitement.php" method="get">
+      <label for="note">1ère Note</label><input type="number" name="note1" id="note1" /><br />
+      <label for="note">2ème Note</label><input type="number" name="note2" id="note2" /><br />
+      <label for="note">3ème Note</label><input type="number" name="note3" id="note3" /><br />
+      <label for="note">5ème Note</label><input type="number" name="note5" id="note4" /><br />
+      <label for="note">4ème Note</label><input type="number" name="note4" id="note5" /><br />
+      <button type="button" name="button">Je calcul ma moyenne !</button>
+      <textarea name="name" rows="8" cols="80"></textarea>
+    </form>
+    <script>
+    $('button').click(function(){
+      var note1 = parseInt($('#note1').val());
+      var note2 = parseInt($('#note2').val());
+      var note3 = parseInt($('#note3').val());
+      var note4 = parseInt($('#note4').val());
+      var note5 = parseInt($('#note5').val());
+      var regex = /^[\d]+$/;
+          if((regex.test(note1) == true && note1 <= 20) && (regex.test(note2) == true && note2 <= 20) && (regex.test(note3) == true && note3 <= 20) && (regex.test(note4) == true && note4 <= 20) && (regex.test(note5) == true && note5 <= 20)) {
+              var moyenne = (parseInt($('#note1').val()) + parseInt($('#note2').val()) + parseInt($('#note3').val()) + parseInt($('#note4').val()) + parseInt($('#note5').val()))/5;
+              if (moyenne >=0 && moyenne < 10) {
+                $('textarea').text('Votre moyenne est de ' + moyenne + '\nEn desous de la moyenne ...');
+              } else if (moyenne >= 10 && moyenne < 13) {
+                $('textarea').text('Votre moyenne est de ' + moyenne + '\nMoyen...');
+              } else if (moyenne >= 13 && moyenne < 16) {
+                $('textarea').text('Votre moyenne est de ' + moyenne + '\nBien');
+              } else if (moyenne >= 16 && moyenne < 20) {
+                $('textarea').text('Votre moyenne est de ' + moyenne + '\nTrès bien !');
+              } else if (moyenne == 20) {
+                $('textarea').text('Votre moyenne est de ' + moyenne + '\nExcellent !');
+              }
+          } else {
+            $('textarea').text('Vos notes doivent êtres comprise entre 0 et 20 !');
+          }
+    })
+
+    </script>
+  </body>
+</html>
